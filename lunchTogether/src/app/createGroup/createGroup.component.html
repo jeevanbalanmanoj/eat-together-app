@@ -1,0 +1,33 @@
+<h2>You can create a group now </h2>
+<div class="col-md-8 col-md-offset-2">
+ <div class="form-group">
+   <br><br><br>
+
+   <label for="name">Name</label>
+  <input id="name" type="text" [(ngModel)]="id_city" class="form-control" placeholder="Give a name to your group ..."><br>
+
+   <label for="language">Language</label>
+   <input id="language" type="text" [(ngModel)]="id_city" class="form-control" placeholder="Is there any language you prefer ..."><br>
+
+   <label for="group_size">Group size</label>
+  <input id="group_size" type="text" [(ngModel)]="id_state" class="form-control" placeholder="How many people are there in your group ... "><br>
+
+   <label for="food_preference">Food preference</label>
+   <input id="food_preference" type="text" [(ngModel)]="id_state" class="form-control" placeholder="Your food preference ... "><br>
+
+   <label for="topic">Topic</label>
+   <select class="form-control" id="topic">
+     <option *ngFor="let topic of topics" value= {{topic}}>
+       {{topic}}
+     </option>
+   </select><br>
+
+   <label for="vacancy">Availability</label>
+   <input id="vacancy" type="text" [(ngModel)]="id_state" class="form-control" placeholder="How many more people can join your group ... "><br>
+
+  <button type="button" class="btn btn-primary" (click)="callWeatherService()">Submit</button>
+  <br><br><br>
+  <br>
+
+ </div>
+</div>
