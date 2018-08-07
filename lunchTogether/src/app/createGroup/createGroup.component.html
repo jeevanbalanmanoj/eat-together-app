@@ -1,22 +1,36 @@
 <h2>You can create a group now </h2>
 <div class="col-md-8 col-md-offset-2">
  <div class="form-group">
-  <input type="text" [(ngModel)]="id_city" class="form-control" placeholder="Give a name to your group ..."><br>
-   <input type="text" [(ngModel)]="id_city" class="form-control" placeholder="Is there any language you prefer ..."><br>
-  <input type="text" [(ngModel)]="id_state" class="form-control" placeholder="How many people are there in yuor group ... "><br>
-   <input type="text" [(ngModel)]="id_state" class="form-control" placeholder="Your food preference ... "><br>
-   <input type="select" [(ngModel)]="id_state" class="form-control" placeholder="Topics you mostly talk ... "><br>
-   <input type="text" [(ngModel)]="id_state" class="form-control" placeholder="How many more people can join your group ... "><br>
+
+   <br><br><br>
+
+   <label for="name">Name</label>
+  <input id="name" type="text" [(ngModel)]="id_city" class="form-control" placeholder="Give a name to your group ..."><br>
+
+   <label for="language">Language</label>
+   <input id="language" type="text" [(ngModel)]="id_city" class="form-control" placeholder="Is there any language you prefer ..."><br>
+
+   <label for="group_size">Group size</label>
+  <input id="group_size" type="text" [(ngModel)]="id_state" class="form-control" placeholder="How many people are there in your group ... "><br>
+
+   <label for="food_preference">Food preference</label>
+   <input id="food_preference" type="text" [(ngModel)]="id_state" class="form-control" placeholder="Your food preference ... "><br>
+
+   <label for="topic">Topic</label>
+   <select class="form-control" id="topic">
+     <option *ngFor="let topic of topics" value= {{topic}}>
+       {{topic}}
+     </option>
+   </select><br>
+
+   <label for="vacancy">Availability</label>
+   <input id="vacancy" type="text" [(ngModel)]="id_state" class="form-control" placeholder="How many more people can join your group ... "><br>
+
   <button type="button" class="btn btn-primary" (click)="callWeatherService()">Submit</button>
   <br><br><br>
   <br>
-  <p class="well lead">
-    <i>City, State, Country :</i> {{ this.op_city }} {{ this.op_region }} {{ this.op_country }} <br>
-    <i>Current Condition :</i> {{ this.op_text }} <br>
-    <i>Current Temperature :</i> {{ this.op_temp }} <br>
-  </p>
-  <p class="text-info">Total # of all the service requests including Weather, Movie, and Currency is :
-    <span class="badge">{{this._sharedService.totReqsMade}}</span>
-  </p>
+
+
+
  </div>
 </div>

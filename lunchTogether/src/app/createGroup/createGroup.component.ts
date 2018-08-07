@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedService } from "./../shared.service";
+
+import { SharedService } from './../shared.service';
+
 
 @Component({
   selector: 'app-weather',
@@ -7,14 +9,18 @@ import { SharedService } from "./../shared.service";
   styles: []
 })
 export class CreateGroupComponent implements OnInit {
-  id_city: string = "";
-  id_state: string = "";
-  op_city: string = "";
-  op_region: string = "";
-  op_country: string = "";
-  op_date: string = "";
-  op_text: string = "";
-  op_temp: string = "";
+
+
+  id_city: string = '';
+  id_state: string = '';
+  op_city: string = '';
+  op_region: string = '';
+  op_country: string = '';
+  op_date: string = '';
+  op_text: string = '';
+  op_temp: string = '';
+  topics = ["Technical","Movies","New Ideas", "General","Others"];
+
   constructor(private _sharedService: SharedService) {
   }
 
