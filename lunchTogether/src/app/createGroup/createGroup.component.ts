@@ -19,13 +19,12 @@ export class CreateGroupComponent implements OnInit {
   op_date: string = '';
   op_text: string = '';
   op_temp: string = '';
+  about: string = '';
   topics = ["Technical","Movies","New Ideas", "General","Others"];
 
   constructor(private _sharedService: SharedService) {
   }
 
-  ngOnInit() {
-  }
 
   callWeatherService() {
     this._sharedService.findWeather(this.id_city, this.id_state)
@@ -43,6 +42,26 @@ export class CreateGroupComponent implements OnInit {
         console.log(error);
       }
       );
+  }
+
+  callAboutService() {
+    this._sharedService.getAboutInformation()
+      .subscribe(
+        result => {
+          console.log(result);
+          this.about = JSON.stringify(result["_body"]);
+        },
+        error => {
+          console.log('Error The callAboutService result JSON value is as follows:');
+          console.log(error);
+        }
+      );
+
+  }
+
+
+  ngOnInit() {
+    this.callAboutService();
   }
 
 }
