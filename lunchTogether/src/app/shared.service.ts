@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from "@angular/http";
+import {Http, Headers, Response, RequestOptions} from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from "rxjs";
+import {Group} from './createGroup/Group';
+
 
 @Injectable()
 export class SharedService {
@@ -12,7 +14,8 @@ export class SharedService {
     findMovieURL2 = "&y=&plot=short&r=json";
     currencyURL = "http://api.fixer.io/latest?symbols=";
     aboutURL = "http://localhost:8080/EatTogether/about";
-    saveGroupURL = "http://localhost:8080/EatTogether/userGroups"
+    saveGroupURL = "http://localhost:8080/EatTogether/UserGroup"
+    fetchGroupURL = "http://localhost:8080/EatTogether/UserGroups"
     totReqsMade: number = 0;
     constructor(private _http: Http) { }
 
@@ -51,6 +54,27 @@ export class SharedService {
         .catch(error =>
       Observable.throw(error));
   }
+
+  getUserGroups() {
+    return this._http.get(this.fetchGroupURL)
+      .map(response => {
+        { return response.json()};
+      })
+      .catch(error =>
+        Observable.throw(error));
+  }
+
+  saveUserGroup(group: Group) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this._http.post(this.saveGroupURL, group, options)
+      .map(response => {
+        { return response};
+      })
+      .catch(error =>
+        Observable.throw(error));
+  }
+
 
 
 }

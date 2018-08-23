@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from "./../shared.service";
+import {Group} from '../createGroup/Group';
 
 @Component({
   selector: 'app-movie',
@@ -14,10 +15,12 @@ export class MoreComponent implements OnInit {
     mv_Director: string = "";
     mv_Actors: string = "";
     mv_Plot: string = "";
+  groups: Group[];
     constructor(private _sharedService: SharedService) {
     }
 
     ngOnInit() {
+      this.callFetchGroupService();
     }
 
     callMovieService() {
@@ -37,4 +40,18 @@ export class MoreComponent implements OnInit {
             }
             );
     }
+
+  callFetchGroupService() {
+    this._sharedService.getUserGroups()
+      .subscribe(
+        result => {
+          this.groups = result;
+        },
+        error => {
+          console.log('Error The callFetchGroupService result JSON value is as follows:');
+          console.log(error);
+        }
+      );
+
+  }
 }

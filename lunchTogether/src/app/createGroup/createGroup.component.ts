@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { SharedService } from './../shared.service';
+import {Group} from './Group';
 
 
 @Component({
@@ -9,24 +10,16 @@ import { SharedService } from './../shared.service';
   styles: []
 })
 export class CreateGroupComponent implements OnInit {
-
-
-  id_city: string = '';
-  id_state: string = '';
-  op_city: string = '';
-  op_region: string = '';
-  op_country: string = '';
-  op_date: string = '';
-  op_text: string = '';
-  op_temp: string = '';
   about: string = '';
   topics = ["Technical","Movies","New Ideas", "General","Others"];
-
+  groups: Group[];
+  group =  new Group();
+  successMessage: string = '';
   constructor(private _sharedService: SharedService) {
   }
 
 
-  callWeatherService() {
+/*  callWeatherService() {
     this._sharedService.findWeather(this.id_city, this.id_state)
       .subscribe(
       lstresult => {
@@ -42,13 +35,12 @@ export class CreateGroupComponent implements OnInit {
         console.log(error);
       }
       );
-  }
+  }*/
 
   callAboutService() {
     this._sharedService.getAboutInformation()
       .subscribe(
         result => {
-          console.log(result);
           this.about = JSON.stringify(result["_body"]);
         },
         error => {
@@ -59,9 +51,38 @@ export class CreateGroupComponent implements OnInit {
 
   }
 
+  callFetchGroupService() {
+    this._sharedService.getUserGroups()
+      .subscribe(
+        result => {
+          this.groups = result;
+        },
+        error => {
+          console.log('Error The callFetchGroupService result JSON value is as follows:');
+          console.log(error);
+        }
+      );
+
+  }
+
+  callSaveGroupService() {
+    this._sharedService.saveUserGroup(this.group)
+      .subscribe(
+        result => {
+          this.successMessage = result;
+        },
+        error => {
+          console.log('Error The callFetchGroupService result JSON value is as follows:');
+          console.log(error);
+        }
+      );
+
+  }
+
 
   ngOnInit() {
     this.callAboutService();
+    this.callFetchGroupService();
   }
 
 }
