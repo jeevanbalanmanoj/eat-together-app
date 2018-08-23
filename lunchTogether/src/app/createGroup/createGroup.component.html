@@ -1,20 +1,26 @@
+<p>
+  {{about}}
+</p>
+
 <h2>You can create a group now </h2>
+
 <div class="col-md-8 col-md-offset-2">
  <div class="form-group">
 
    <br><br><br>
 
+
    <label for="name">Name</label>
-  <input id="name" type="text" [(ngModel)]="id_city" class="form-control" placeholder="Give a name to your group ..."><br>
+  <input id="name" type="text" [(ngModel)]="group.name" class="form-control" placeholder="Give a name to your group ..."><br>
 
    <label for="language">Language</label>
-   <input id="language" type="text" [(ngModel)]="id_city" class="form-control" placeholder="Is there any language you prefer ..."><br>
+   <input id="language" type="text" [(ngModel)]="group.language" class="form-control" placeholder="Is there any language you prefer ..."><br>
 
    <label for="group_size">Group size</label>
-  <input id="group_size" type="text" [(ngModel)]="id_state" class="form-control" placeholder="How many people are there in your group ... "><br>
+  <input id="group_size" type="text" [(ngModel)]="group.groupSize" class="form-control" placeholder="How many people are there in your group ... "><br>
 
    <label for="food_preference">Food preference</label>
-   <input id="food_preference" type="text" [(ngModel)]="id_state" class="form-control" placeholder="Your food preference ... "><br>
+   <input id="food_preference" type="text" [(ngModel)]="group.foodPreference" class="form-control" placeholder="Your food preference ... "><br>
 
    <label for="topic">Topic</label>
    <select class="form-control" id="topic">
@@ -24,9 +30,10 @@
    </select><br>
 
    <label for="vacancy">Availability</label>
-   <input id="vacancy" type="text" [(ngModel)]="id_state" class="form-control" placeholder="How many more people can join your group ... "><br>
+   <input id="vacancy" type="text" [(ngModel)]="group.vacancy" class="form-control" placeholder="How many more people can join your group ... "><br>
 
-  <button type="button" class="btn btn-primary" (click)="callWeatherService()">Submit</button>
+  <button type="button" class="btn btn-primary" (click)="callSaveGroupService()">Submit</button>
+   <p>{{successMessage}}</p>
   <br><br><br>
   <br>
 

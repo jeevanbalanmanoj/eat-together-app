@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from "./../shared.service";
+import {Group} from '../createGroup/Group';
 
 @Component({
   selector: 'app-currency',
@@ -10,10 +11,12 @@ export class JoinGroupComponent implements OnInit {
 
   id_currency: string = "";
   my_result: any;
+  groups: Group[];
   constructor(private _sharedService: SharedService) {
   }
 
   ngOnInit() {
+    this.callFetchGroupService();
   }
 
   callCurrencyService() {
@@ -26,6 +29,20 @@ export class JoinGroupComponent implements OnInit {
         console.log("Error. The callCurrencyService result JSON value is as follows:");
         console.log(error);
       }
+      );
+
+  }
+
+  callFetchGroupService() {
+    this._sharedService.getUserGroups()
+      .subscribe(
+        result => {
+          this.groups = result;
+        },
+        error => {
+          console.log('Error The callFetchGroupService result JSON value is as follows:');
+          console.log(error);
+        }
       );
 
   }

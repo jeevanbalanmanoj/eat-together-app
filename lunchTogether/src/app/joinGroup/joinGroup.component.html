@@ -1,13 +1,22 @@
-<h2>Currency Exchange Rates</h2>
+<h2>lunch Group Database</h2>
 <div class="col-md-8 col-md-offset-2">
- <div class="form-group">
-  <input type="text" [(ngModel)]="id_currency" (change)="callCurrencyService()" class="form-control" placeholder="Enter Currency Symbol. Example: GBP(,AUD,INR)...">
-  <br><br>
-  <h3>Rate Details</h3>
-  <br>
-  <p class="well lead">Exchange rate relative to Euro in a JSON format: : {{ this.my_result }} </p>
-  <p class="text-info">Total # of all the service requests including Weather, Movie, and Currency is :
-    <span class="badge">{{this._sharedService.totReqsMade}}</span>
-  </p>
- </div>
+  <div *ngFor="let group of groups">{{group.name}}
+  </div>
+  <div class="form-group" *ngFor="let group of groups">
+    <input type="text" required [(ngModel)]="group.id" (change)="callMovieService()" class="form-control" placeholder="Enter Movie name ...">
+    <br><br>
+    <h3>Group Details</h3>
+    <br>
+    <p class="well lead">
+      <i> Name :</i> {{ group.name }} <br>
+      <i> Language :</i> {{ group.language }} <br>
+      <i> Group Size :</i> {{ group.groupSize }} <br>
+      <i> Food Preference :</i> {{ group.foodPreference }} <br>
+      <i> Topic :</i> {{ group.topic }} <br>
+      <i> Vacancy :</i> {{ group.vacancy }} <br>
+    </p>
+    <p class="text-info">Number of groups registered so far :
+      <span class="badge">{{groups.size}}</span>
+    </p>
+  </div>
 </div>
