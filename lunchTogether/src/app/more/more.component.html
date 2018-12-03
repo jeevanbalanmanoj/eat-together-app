@@ -1,15 +1,17 @@
-<h2>Lunch Group Database</h2>
+<h2>Lunch LoginPage Database</h2>
 <div class="col-md-8 col-md-offset-2">
-  <h3>Group Details</h3>
+  <h3>LoginPage Details</h3>
 
   <div class="form-group" *ngFor="let group of groups">
     <p class="well lead">
       <i> Name :</i> {{ group.name }} <br>
       <i> Language :</i> {{ group.language }} <br>
-      <i> Group Size :</i> {{ group.groupSize }} <br>
+      <i> LoginPage Size :</i> {{ group.groupSize }} <br>
       <i> Food Preference :</i> {{ group.foodPreference }} <br>
       <i> Topic :</i> {{ group.topic }} <br>
       <i> Vacancy :</i> {{ group.vacancy }} <br>
+      <button class="float-right" (click)="joinGroup(group.id)">Join</button>
+      {{successMessage}}
     </p>
   </div>
 

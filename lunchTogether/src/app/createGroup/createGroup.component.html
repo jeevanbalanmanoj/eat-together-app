@@ -2,37 +2,34 @@
   {{about}}
 </p>
 
-<h2>You can create a group now </h2>
+<h3>You can create a group now </h3>
 
 <div class="col-md-8 col-md-offset-2">
  <div class="form-group">
 
-   <br><br><br>
-
-
    <label for="name">Name</label>
-  <input id="name" type="text" [(ngModel)]="group.name" class="form-control" placeholder="Give a name to your group ..."><br>
-
+  <input id="name" type="text" [(ngModel)]="group.name" class="form-control float-right" placeholder="Give a name to your group ..."><br>
+<br><br>
    <label for="language">Language</label>
-   <input id="language" type="text" [(ngModel)]="group.language" class="form-control" placeholder="Is there any language you prefer ..."><br>
-
+   <input id="language" type="text" [(ngModel)]="group.language" class="form-control float-right" placeholder="Is there any language you prefer ..."><br>
+   <br><br>
    <label for="group_size">Group size</label>
-  <input id="group_size" type="text" [(ngModel)]="group.groupSize" class="form-control" placeholder="How many people are there in your group ... "><br>
-
+  <input id="group_size" type="text" [(ngModel)]="group.groupSize" class="form-control float-right" placeholder="How many people are there in your group ... "><br>
+   <br><br>
    <label for="food_preference">Food preference</label>
-   <input id="food_preference" type="text" [(ngModel)]="group.foodPreference" class="form-control" placeholder="Your food preference ... "><br>
-
+   <input id="food_preference" type="text" [(ngModel)]="group.foodPreference" class="form-control float-right" placeholder="Your food preference ... "><br>
+   <br><br>
    <label for="topic">Topic</label>
-   <select class="form-control" id="topic">
+   <select style="width: 40%;" class="form-control float-right" id="topic">
      <option *ngFor="let topic of topics" value= {{topic}}>
        {{topic}}
      </option>
    </select><br>
-
+   <br><br>
    <label for="vacancy">Availability</label>
-   <input id="vacancy" type="text" [(ngModel)]="group.vacancy" class="form-control" placeholder="How many more people can join your group ... "><br>
-
-  <button type="button" class="btn btn-primary" (click)="callSaveGroupService()">Submit</button>
+   <input id="vacancy" type="text" [(ngModel)]="group.vacancy" class="form-control float-right" placeholder="How many more people can join your group ... "><br>
+<br><br><br>
+  <button type="button" class="btn btn-primary float-right" (click)="callSaveGroupService()">Submit</button>
    <p>{{successMessage}}</p>
   <br><br><br>
   <br>

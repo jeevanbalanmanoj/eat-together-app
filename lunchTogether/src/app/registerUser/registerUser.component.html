@@ -1,0 +1,30 @@
+
+<h2>User Registration All fields are mandatory</h2>
+
+<div class="col-md-8 col-md-offset-2">
+ <div class="form-group">
+
+   <label for="first_name">First Name</label>
+  <input id="first_name" type="text" [(ngModel)]="user.firstName" class="form-control" placeholder="Enter you First Name ..."><br>
+
+   <label for="last_name">Last Name</label>
+   <input id="last_name" type="text" [(ngModel)]="user.lastName" class="form-control" placeholder="Enter you Last Name ..."><br>
+
+   <label for="userName">User Name</label>
+   <input id="userName" type="text" [(ngModel)]="user.username" class="form-control" placeholder="Enter you User Name ..."><br>
+
+   <label for="email">Email</label>
+   <input id="email" type="text" [(ngModel)]="user.email" class="form-control" placeholder="please netre your email..."><br>
+
+   <label for="password">Password</label>
+  <input id="password" type="password" [(ngModel)]="user.password" class="form-control" placeholder="please enter password "><br>
+
+  <button type="button" class="btn btn-primary" (click)="callSaveUserService()">Register</button>
+   <p>{{successMessage}}</p>
+  <br><br><br>
+  <br>
+
+
+
+ </div>
+</div>

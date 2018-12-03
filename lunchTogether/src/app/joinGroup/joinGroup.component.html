@@ -1,22 +1,25 @@
-<h2>lunch Group Database</h2>
+<h2>lunch LoginPage Database</h2>
 <div class="col-md-8 col-md-offset-2">
   <div *ngFor="let group of groups">{{group.name}}
   </div>
   <div class="form-group" *ngFor="let group of groups">
     <input type="text" required [(ngModel)]="group.id" (change)="callMovieService()" class="form-control" placeholder="Enter Movie name ...">
     <br><br>
-    <h3>Group Details</h3>
+    <h3>LoginPage Details</h3>
     <br>
     <p class="well lead">
       <i> Name :</i> {{ group.name }} <br>
       <i> Language :</i> {{ group.language }} <br>
-      <i> Group Size :</i> {{ group.groupSize }} <br>
+      <i> LoginPage Size :</i> {{ group.groupSize }} <br>
       <i> Food Preference :</i> {{ group.foodPreference }} <br>
       <i> Topic :</i> {{ group.topic }} <br>
       <i> Vacancy :</i> {{ group.vacancy }} <br>
     </p>
-    <p class="text-info">Number of groups registered so far :
-      <span class="badge">{{groups.size}}</span>
-    </p>
+
+    <button class="float-right">Join</button>
   </div>
+
+  <p class="text-info">Number of groups registered so far :
+    <span class="badge">{{groups.size}}</span>
+  </p>
 </div>

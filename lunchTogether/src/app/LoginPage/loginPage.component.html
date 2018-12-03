@@ -1,0 +1,22 @@
+
+<h3>Hi Welcome to Dell EMC Fun @ Food F@F</h3>
+
+<form>
+
+  <div>
+    <label for="uname"><b>Username</b></label>
+    <input id="uname" [(ngModel)]="user.username" type="text" placeholder="Enter Username" name="uname" required>
+    <br>
+
+    <label for="psw"><b>Password</b></label>
+    <input id="psw" [(ngModel)]="user.password" type="password" placeholder="Enter Password" name="psw" required>
+<br>
+    <button (click)="getUserInfoByUserName()" type="submit">Login</button>
+  </div>
+
+  <div style="background-color:#f1f1f1">
+    <button type="button" (click)="close()" class="cancelbtn">Cancel</button>
+    <span class="psw">New User? <a [routerLink]="['/register']">Register</a></span>
+  </div>
+  <div style="color: #f44336">{{message}}</div>
+</form>
