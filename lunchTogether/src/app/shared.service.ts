@@ -1,12 +1,20 @@
 import { Injectable } from '@angular/core';
-import {Http, Headers, Response, RequestOptions} from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from "rxjs";
 import {Group} from './createGroup/Group';
+import {Headers, Http, RequestOptions, Response} from "@angular/http";
+import {User} from "./registerUser/User";
 
 
 @Injectable()
 export class SharedService {
+  get userLoggedIn(): Response {
+    return this._userLoggedIn;
+  }
+
+  set userLoggedIn(value: Response) {
+    this._userLoggedIn = value;
+  }
     weatherURL1 = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22";
     weatherURL2 = "%2C%20";
     weatherURL3 = "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
@@ -15,18 +23,15 @@ export class SharedService {
     currencyURL = "http://api.fixer.io/latest?symbols=";
     aboutURL = "http://localhost:8080/EatTogether/about";
     saveGroupURL = "http://localhost:8080/EatTogether/UserGroup"
+    saveUserURL = "http://localhost:8080/EatTogether/User"
     fetchGroupURL = "http://localhost:8080/EatTogether/UserGroups"
+    getUserURL = "http://localhost:8080/EatTogether/User?username=";
+    joinGroupURL = "http://localhost:8080/EatTogether/User/Join?groupId=";
     totReqsMade: number = 0;
+    private _userLoggedIn: Response;
     constructor(private _http: Http) { }
 
-    findWeather(city, state) {
-        this.totReqsMade = this.totReqsMade + 1;
-        return this._http.get(this.weatherURL1 + city + this.weatherURL2+ state + this.weatherURL3)
-            .map(response => {
-                { return response.json() };
-            })
-            .catch(error => Observable.throw(error.json()));
-    }
+
 
     findMovie(movie) {
         this.totReqsMade = this.totReqsMade + 1;
@@ -55,7 +60,7 @@ export class SharedService {
       Observable.throw(error));
   }
 
-  getUserGroups() {
+    getUserGroups() {
     return this._http.get(this.fetchGroupURL)
       .map(response => {
         { return response.json()};
@@ -64,7 +69,7 @@ export class SharedService {
         Observable.throw(error));
   }
 
-  saveUserGroup(group: Group) {
+    saveUserGroup(group: Group) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     return this._http.post(this.saveGroupURL, group, options)
@@ -75,6 +80,37 @@ export class SharedService {
         Observable.throw(error));
   }
 
+    saveUser(user: User) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this._http.post(this.saveUserURL, user, options)
+      .map(response => {
+        { return response};
+      })
+      .catch(error =>
+        Observable.throw(error));
+  }
 
+    getUserInfo(userName) {
+    return this._http.get(this.getUserURL + userName)
+      .map(response => {
+        {
+        this.userLoggedIn = JSON.parse(response["_body"]);
+          return response;
+        };
+      })
+      .catch(error =>
+        Observable.throw(error));
+  }
 
+  joinGroup(userId : number, groupid: number) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this._http.post(this.joinGroupURL + groupid, userId, options)
+      .map(response => {
+        { return response};
+      })
+      .catch(error =>
+        Observable.throw(error));
+  }
 }

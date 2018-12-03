@@ -10,6 +10,9 @@ import { JoinGroupComponent } from './joinGroup/joinGroup.component';
 import { MoreComponent } from './more/more.component';
 import { CONST_ROUTING } from './app.routing';
 import { SharedService } from "./shared.service";
+import {HomePageComponent} from "./homePage/homePage.component";
+import {RegisterUserComponent} from "./registerUser/registerUser.component";
+import {LoginPageComponent} from "./LoginPage/loginPage.component";
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { SharedService } from "./shared.service";
     MenuComponent,
     CreateGroupComponent,
     JoinGroupComponent,
-    MoreComponent
+    MoreComponent,
+    HomePageComponent,
+    RegisterUserComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,

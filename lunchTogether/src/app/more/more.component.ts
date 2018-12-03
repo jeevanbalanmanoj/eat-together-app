@@ -16,6 +16,8 @@ export class MoreComponent implements OnInit {
     mv_Actors: string = "";
     mv_Plot: string = "";
   groups: Group[];
+  private userId: number;
+  private successMessage: any;
     constructor(private _sharedService: SharedService) {
     }
 
@@ -53,5 +55,19 @@ export class MoreComponent implements OnInit {
         }
       );
 
+  }
+
+  joinGroup(groupId: number) {
+    this.userId = this._sharedService.userLoggedIn["id"];
+    this._sharedService.joinGroup(this.userId, groupId)
+      .subscribe(
+        result => {
+          this.successMessage = result;
+        },
+        error => {
+          console.log('Error The callFetchGroupService result JSON value is as follows:');
+          console.log(error);
+        }
+      );
   }
 }

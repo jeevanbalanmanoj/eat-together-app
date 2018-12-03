@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {SharedService} from "./shared.service";
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _sharedService: SharedService,
+    private router: Router
+) {
+  }
+
+  checkUserLogin() {
+    if(this._sharedService.userLoggedIn){
+          this.router.navigate(['/homepage']);
+    }
+  }
 
   ngOnInit() {
+    this.checkUserLogin();
   }
 
 }
