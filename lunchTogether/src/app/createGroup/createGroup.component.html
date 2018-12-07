@@ -20,7 +20,7 @@
    <input id="food_preference" type="text" [(ngModel)]="group.foodPreference" class="form-control float-right" placeholder="Your food preference ... "><br>
    <br><br>
    <label for="topic">Topic</label>
-   <select style="width: 40%;" class="form-control float-right" id="topic">
+   <select [(ngModel)]="group.topic" style="width: 40%;" class="form-control float-right" id="topic">
      <option *ngFor="let topic of topics" value= {{topic}}>
        {{topic}}
      </option>

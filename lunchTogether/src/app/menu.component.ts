@@ -13,8 +13,7 @@ export class MenuComponent implements OnInit {
   constructor(
     private _sharedService: SharedService,
     private router: Router
-) {
-  }
+) {  }
 
   checkUserLogin() {
     if(this._sharedService.userLoggedIn){
