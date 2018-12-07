@@ -20,6 +20,7 @@
   <input id="password" type="password" [(ngModel)]="user.password" class="form-control" placeholder="please enter password "><br>
 
   <button type="button" class="btn btn-primary" (click)="callSaveUserService()">Register</button>
+   <button routerLink="/login" type="button" class="btn btn-primary" style="float: right">Login</button>
    <p>{{successMessage}}</p>
   <br><br><br>
   <br>

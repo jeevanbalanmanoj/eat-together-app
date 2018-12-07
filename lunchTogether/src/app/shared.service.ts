@@ -15,18 +15,21 @@ export class SharedService {
   set userLoggedIn(value: Response) {
     this._userLoggedIn = value;
   }
+
+    domain = "https://eat-together-service-cf.cfapps.io/EatTogether/";
+    //domain = "http://localhost:8080/EatTogether/";
     weatherURL1 = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22";
     weatherURL2 = "%2C%20";
     weatherURL3 = "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
     findMovieURL1 = "http://www.omdbapi.com/?t=";
     findMovieURL2 = "&y=&plot=short&r=json";
     currencyURL = "http://api.fixer.io/latest?symbols=";
-    aboutURL = "http://localhost:8080/EatTogether/about";
-    saveGroupURL = "http://localhost:8080/EatTogether/UserGroup"
-    saveUserURL = "http://localhost:8080/EatTogether/User"
-    fetchGroupURL = "http://localhost:8080/EatTogether/UserGroups"
-    getUserURL = "http://localhost:8080/EatTogether/User?username=";
-    joinGroupURL = "http://localhost:8080/EatTogether/User/Join?groupId=";
+    aboutURL = this.domain + "about";
+    saveGroupURL = this.domain + "UserGroup"
+    saveUserURL = this.domain + "User"
+    fetchGroupURL = this.domain + "UserGroups"
+    getUserURL = this.domain + "User?username=";
+    joinGroupURL = this.domain + "User/Join?groupId=";
     totReqsMade: number = 0;
     private _userLoggedIn: Response;
     constructor(private _http: Http) { }
